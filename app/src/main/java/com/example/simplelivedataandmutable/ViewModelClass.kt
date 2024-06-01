@@ -21,6 +21,8 @@ class ViewModelClass (startingTitle: String, startingResult: Int): ViewModel(){
         when(operation){
             '+' -> _startingResult.value = (startingResult.value)?.plus(input)
             '-' -> _startingResult.value = (startingResult.value)?.minus(input)
+            '*' -> _startingResult.value = (startingResult.value)?.times(input)
+            '/' -> _startingResult.value = (startingResult.value)?.div(input)
         }
     }
 }

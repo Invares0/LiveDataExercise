@@ -39,6 +39,16 @@ class MainActivity : ComponentActivity() {
             val number = userInput.toInt()
             viewModel.setOperation(number, '-')
         }
+        binding.buttonTimes.setOnClickListener {
+            val userInput = binding.editInput.text.toString()
+            val number = userInput.toInt()
+            viewModel.setOperation(number, '*')
+        }
+        binding.buttonDivide.setOnClickListener {
+            val userInput = binding.editInput.text.toString()
+            val number = userInput.toInt()
+            viewModel.setOperation(number, '/')
+        }
     }
 
 }

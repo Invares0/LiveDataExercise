@@ -7,12 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
-class ViewModelClass (startingTitle: String, startingResult: Int): ViewModel(){
-    private val _startingTitle = MutableLiveData<String>(startingTitle)
+class ViewModelClass (application: Application): AndroidViewModel(application){
+    private val _startingTitle = MutableLiveData<String>("")
     val startingTitle: LiveData<String>
         get() = _startingTitle
 
-    private val _startingResult = MutableLiveData<Int>(startingResult)
+    private val _startingResult = MutableLiveData<Int>(0)
     val startingResult: LiveData<Int>
         get() = _startingResult
 

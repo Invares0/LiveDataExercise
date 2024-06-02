@@ -1,6 +1,7 @@
 package com.example.simplelivedataandmutable
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -12,12 +13,10 @@ import com.example.simplelivedataandmutable.databinding.ActivityMainBinding
 class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: ViewModelClass
-    private lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModelFactory = ViewModelFactory("Result", 0)
-        viewModel = ViewModelProvider(this,viewModelFactory).get(ViewModelClass::class.java)
+        viewModel = ViewModelProvider(this).get(ViewModelClass::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -31,23 +30,39 @@ class MainActivity : ComponentActivity() {
 
         binding.buttonAdd.setOnClickListener {
             val userInput = binding.editInput.text.toString()
-            val number = userInput.toInt()
-            viewModel.setOperation(number, '+')
+            if (userInput.isEmpty()){
+                Toast.makeText(this, "Enter a number", Toast.LENGTH_SHORT).show()
+            }else {
+                val number = userInput.toInt()
+                viewModel.setOperation(number, '+')
+            }
         }
         binding.buttonMinus.setOnClickListener {
             val userInput = binding.editInput.text.toString()
-            val number = userInput.toInt()
-            viewModel.setOperation(number, '-')
+            if (userInput.isEmpty()){
+                Toast.makeText(this, "Enter a number", Toast.LENGTH_SHORT).show()
+            }else{
+                val number = userInput.toInt()
+                viewModel.setOperation(number, '-')
+            }
         }
         binding.buttonTimes.setOnClickListener {
             val userInput = binding.editInput.text.toString()
-            val number = userInput.toInt()
-            viewModel.setOperation(number, '*')
+            if(userInput.isEmpty()) {
+                Toast.makeText(this, "Enter a number", Toast.LENGTH_SHORT).show()
+            }else {
+                val number = userInput.toInt()
+                viewModel.setOperation(number, '*')
+            }
         }
         binding.buttonDivide.setOnClickListener {
             val userInput = binding.editInput.text.toString()
-            val number = userInput.toInt()
-            viewModel.setOperation(number, '/')
+            if (userInput.isEmpty()){
+                Toast.makeText(this, "Enter a number", Toast.LENGTH_SHORT).show()
+            }else {
+                val number = userInput.toInt()
+                viewModel.setOperation(number, '/')
+            }
         }
     }
 
